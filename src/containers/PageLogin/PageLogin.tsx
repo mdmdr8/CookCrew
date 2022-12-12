@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import facebookSvg from "images/Facebook.svg";
-import twitterSvg from "images/Twitter.svg";
-import googleSvg from "images/Google.svg";
+// import facebookSvg from "images/Facebook.svg";
+// import twitterSvg from "images/Twitter.svg";
+// import googleSvg from "images/Google.svg";
 import { Helmet } from "react-helmet";
 import Input from "shared/Input/Input";
 import { Link } from "react-router-dom";
@@ -11,23 +11,23 @@ export interface PageLoginProps {
   className?: string;
 }
 
-const loginSocials = [
-  {
-    name: "Continue with Facebook",
-    href: "#",
-    icon: facebookSvg,
-  },
-  {
-    name: "Continue with Twitter",
-    href: "#",
-    icon: twitterSvg,
-  },
-  {
-    name: "Continue with Google",
-    href: "#",
-    icon: googleSvg,
-  },
-];
+// const loginSocials = [
+//   {
+//     name: "Continue with Facebook",
+//     href: "#",
+//     icon: facebookSvg,
+//   },
+//   {
+//     name: "Continue with Twitter",
+//     href: "#",
+//     icon: twitterSvg,
+//   },
+//   {
+//     name: "Continue with Google",
+//     href: "#",
+//     icon: googleSvg,
+//   },
+// ];
 
 const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
   return (
@@ -40,7 +40,7 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
           Login
         </h2>
         <div className="max-w-md mx-auto space-y-6">
-          <div className="grid gap-3">
+          {/* <div className="grid gap-3">
             {loginSocials.map((item, index) => (
               <a
                 key={index}
@@ -58,22 +58,21 @@ const PageLogin: FC<PageLoginProps> = ({ className = "" }) => {
               </a>
             ))}
           </div>
-          {/* OR */}
+          OR
           <div className="relative text-center">
             <span className="relative z-10 inline-block px-4 font-medium text-sm bg-white dark:text-neutral-400 dark:bg-neutral-900">
               OR
             </span>
             <div className="absolute left-0 w-full top-1/2 transform -translate-y-1/2 border border-neutral-100 dark:border-neutral-800"></div>
-          </div>
+          </div> */}
           {/* FORM */}
           <form className="grid grid-cols-1 gap-6" action="#" method="post">
             <label className="block">
               <span className="text-neutral-800 dark:text-neutral-200">
-                Email address
+                ID
               </span>
               <Input
-                type="email"
-                placeholder="example@example.com"
+                type="text"
                 className="mt-1"
               />
             </label>
