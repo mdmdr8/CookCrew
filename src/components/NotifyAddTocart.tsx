@@ -1,6 +1,6 @@
 import { Transition } from "@headlessui/react";
-import Prices from "components/Prices";
-import { PRODUCTS } from "data/data";
+import Calories from "components/Prices";
+import { RECIPES } from "data/recipedata";
 import React, { FC } from "react";
 
 interface Props {
@@ -18,7 +18,7 @@ const NotifyAddTocart: FC<Props> = ({
   qualitySelected,
   sizeSelected,
 }) => {
-  const { name, price, variants } = PRODUCTS[0];
+  const { name, calories, } = RECIPES[0];
 
   const renderProductCartOnNotify = () => {
     return (
@@ -37,14 +37,14 @@ const NotifyAddTocart: FC<Props> = ({
               <div>
                 <h3 className="text-base font-medium ">{name}</h3>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                  <span>
+                  {/* <span>
                     {variants ? variants[variantActive].name : `Natural`}
-                  </span>
+                  </span> */}
                   <span className="mx-2 border-l border-slate-200 dark:border-slate-700 h-4"></span>
                   <span>{sizeSelected || "XL"}</span>
                 </p>
               </div>
-              <Prices price={price} className="mt-0.5" />
+              <Calories calories={calories} className="mt-0.5" />
             </div>
           </div>
           <div className="flex flex-1 items-end justify-between text-sm">

@@ -16,13 +16,13 @@ import SectionClientSay from "components/SectionClientSay/SectionClientSay";
 import SectionMagazine5 from "containers/BlogPage/SectionMagazine5";
 import Heading from "components/Heading/Heading";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
-import { PRODUCTS, SPORT_PRODUCTS } from "data/data";
+import { RECIPES } from "data/recipedata";
 
 function PageHome() {
   return (
     <div className="nc-PageHome relative overflow-hidden">
       <Helmet>
-        <title>Ciseco || Ecommerce Template</title>
+        <title>cookcrew</title>
       </Helmet>
 
       {/* SECTION HERO */}
@@ -34,22 +34,14 @@ function PageHome() {
 
       <div className="container relative space-y-24 my-24 lg:space-y-32 lg:my-32">
         {/* SECTION */}
-        <SectionSliderProductCard
-          data={[
-            PRODUCTS[4],
-            SPORT_PRODUCTS[5],
-            PRODUCTS[7],
-            SPORT_PRODUCTS[1],
-            PRODUCTS[6],
-          ]}
-        />
+        <SectionSliderProductCard/>
 
-        <div className="py-24 lg:py-32 border-t border-b border-slate-200 dark:border-slate-700">
+        {/* <div className="py-24 lg:py-32 border-t border-b border-slate-200 dark:border-slate-700">
           <SectionHowItWork />
-        </div>
+        </div> */}
 
         {/* SECTION */}
-        <SectionPromo1 />
+        {/* <SectionPromo1 /> */}
 
         {/* SECTION */}
         <div className="relative py-24 lg:py-32">
@@ -63,7 +55,7 @@ function PageHome() {
         />
 
         {/*  */}
-        <SectionPromo2 />
+        {/* <SectionPromo2 /> */}
 
         {/* SECTION 3 */}
         <SectionSliderLargeProduct cardStyle="style2" />
@@ -72,12 +64,12 @@ function PageHome() {
         <SectionSliderCategories />
 
         {/* SECTION */}
-        <SectionPromo3 />
+        {/* <SectionPromo3 /> */}
 
         {/* SECTION */}
         <SectionGridFeatureItems />
 
-        <div className="relative py-24 lg:py-32">
+        {/* <div className="relative py-24 lg:py-32">
           <BackgroundSection />
           <div>
             <Heading rightDescText="From the Ciseco blog">
@@ -88,10 +80,10 @@ function PageHome() {
               <ButtonSecondary>Show all blog articles</ButtonSecondary>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/*  */}
-        <SectionClientSay />
+        {/* <SectionClientSay /> */}
       </div>
     </div>
   );

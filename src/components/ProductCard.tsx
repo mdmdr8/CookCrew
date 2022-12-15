@@ -13,34 +13,33 @@ import toast from "react-hot-toast";
 import { Transition } from "@headlessui/react";
 import ModalQuickView from "./ModalQuickView";
 import ProductStatus from "./ProductStatus";
+import { Recipes, RECIPES } from "data/recipedata";
+import Calories from "./Prices";
 
-export interface ProductCardProps {
+export interface RecipeCardProps {
   className?: string;
-  data?: Product;
+  data?: Recipes;
   isLiked?: boolean;
 }
 
-const ProductCard: FC<ProductCardProps> = ({
+const RecipeCard: FC<RecipeCardProps> = ({
   className = "",
-  data = PRODUCTS[0],
+  data = RECIPES[0],
   isLiked,
 }) => {
   const {
     name,
-    price,
-    description,
-    sizes,
-    variants,
-    variantType,
-    status,
-    image,
+    
+    calories,
+    image,  
+    link,
   } = data;
   const [variantActive, setVariantActive] = React.useState(0);
   const [showModalQuickView, setShowModalQuickView] = React.useState(false);
 
   const history = useHistory();
 
-  const notifyAddTocart = ({ size }: { size?: string }) => {
+  const notifyAddTocart = ({ name }: { name?: string }) => {
     toast.custom(
       (t) => (
         <Transition
@@ -55,17 +54,17 @@ const ProductCard: FC<ProductCardProps> = ({
           leaveTo="opacity-0 translate-x-20"
         >
           <p className="block text-base font-semibold leading-none">
-            Added to cart!
+            찜했습니다!
           </p>
           <div className="border-t border-slate-200 dark:border-slate-700 my-4" />
-          {renderProductCartOnNotify({ size })}
+          {renderProductCartOnNotify({ name })}
         </Transition>
       ),
       { position: "top-right", id: "nc-product-notify", duration: 3000 }
     );
   };
 
-  const renderProductCartOnNotify = ({ size }: { size?: string }) => {
+  const renderProductCartOnNotify = ({ name }: { name?: string }) => {
     return (
       <div className="flex ">
         <div className="h-24 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100">
@@ -82,14 +81,14 @@ const ProductCard: FC<ProductCardProps> = ({
               <div>
                 <h3 className="text-base font-medium ">{name}</h3>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                  <span>
+                  {/* <span>s
                     {variants ? variants[variantActive].name : `Natural`}
-                  </span>
+                  </span> */}
                   <span className="mx-2 border-l border-slate-200 dark:border-slate-700 h-4"></span>
-                  <span>{size || "XL"}</span>
+                  <span>{name || "XL"}</span>
                 </p>
               </div>
-              <Prices price={price} className="mt-0.5" />
+              <Calories calories={calories} className="mt-0.5" />
             </div>
           </div>
           <div className="flex flex-1 items-end justify-between text-sm">
@@ -104,7 +103,7 @@ const ProductCard: FC<ProductCardProps> = ({
                   history.push("cart");
                 }}
               >
-                View cart
+                찜 목록 보기
               </button>
             </div>
           </div>
@@ -138,59 +137,59 @@ const ProductCard: FC<ProductCardProps> = ({
     return "border-transparent";
   };
 
-  const renderVariants = () => {
-    if (!variants || !variants.length || !variantType) {
-      return null;
-    }
+  // const renderVariants = () => {
+  //   if (!variants || !variants.length || !variantType) {
+  //     return null;
+  //   }
 
-    if (variantType === "color") {
-      return (
-        <div className="flex space-x-1">
-          {variants.map((variant, index) => (
-            <div
-              key={index}
-              onClick={() => setVariantActive(index)}
-              className={`relative w-6 h-6 rounded-full overflow-hidden z-10 border cursor-pointer ${
-                variantActive === index
-                  ? getBorderClass(variant.color)
-                  : "border-transparent"
-              }`}
-              title={variant.name}
-            >
-              <div
-                className={`absolute inset-0.5 rounded-full z-0 ${variant.color}`}
-              ></div>
-            </div>
-          ))}
-        </div>
-      );
-    }
+  //   if (variantType === "color") {
+  //     return (
+  //       <div className="flex space-x-1">
+  //         {variants.map((variant, index) => (
+  //           <div
+  //             key={index}
+  //             onClick={() => setVariantActive(index)}
+  //             className={`relative w-6 h-6 rounded-full overflow-hidden z-10 border cursor-pointer ${
+  //               variantActive === index
+  //                 ? getBorderClass(variant.color)
+  //                 : "border-transparent"
+  //             }`}
+  //             title={variant.name}
+  //           >
+  //             <div
+  //               className={`absolute inset-0.5 rounded-full z-0 ${variant.color}`}
+  //             ></div>
+  //           </div>
+  //         ))}
+  //       </div>
+  //     );
+  //   }
 
-    return (
-      <div className="flex ">
-        {variants.map((variant, index) => (
-          <div
-            key={index}
-            onClick={() => setVariantActive(index)}
-            className={`relative w-11 h-6 rounded-full overflow-hidden z-10 border cursor-pointer ${
-              variantActive === index
-                ? "border-black dark:border-slate-300"
-                : "border-transparent"
-            }`}
-            title={variant.name}
-          >
-            <div className="absolute inset-0.5 rounded-full overflow-hidden z-0">
-              <img
-                src={variant.thumbnail}
-                alt="variant"
-                className="absolute w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  };
+  //   return (
+  //     <div className="flex ">
+  //       {variants.map((variant, index) => (
+  //         <div
+  //           key={index}
+  //           onClick={() => setVariantActive(index)}
+  //           className={`relative w-11 h-6 rounded-full overflow-hidden z-10 border cursor-pointer ${
+  //             variantActive === index
+  //               ? "border-black dark:border-slate-300"
+  //               : "border-transparent"
+  //           }`}
+  //           title={variant.name}
+  //         >
+  //           <div className="absolute inset-0.5 rounded-full overflow-hidden z-0">
+  //             <img
+  //               src={variant.thumbnail}
+  //               alt="variant"
+  //               className="absolute w-full h-full object-cover"
+  //             />
+  //           </div>
+  //         </div>
+  //       ))}
+  //     </div>
+  //   );
+  // };
 
   const renderGroupButtons = () => {
     return (
@@ -199,7 +198,7 @@ const ProductCard: FC<ProductCardProps> = ({
           className="shadow-lg"
           fontSize="text-xs"
           sizeClass="py-2 px-4"
-          onClick={() => notifyAddTocart({ size: "XL" })}
+          onClick={() => notifyAddTocart({ name: "XL" })}
         >
           <BagIcon className="w-3.5 h-3.5 mb-0.5" />
           <span className="ml-1">Add to bag</span>
@@ -217,27 +216,27 @@ const ProductCard: FC<ProductCardProps> = ({
     );
   };
 
-  const renderSizeList = () => {
-    if (!sizes || !sizes.length) {
-      return null;
-    }
+  // const renderSizeList = () => {
+  //   if (!sizes || !sizes.length) {
+  //     return null;
+  //   }
 
-    return (
-      <div className="absolute bottom-0 inset-x-1 space-x-1.5 flex justify-center opacity-0 invisible group-hover:bottom-4 group-hover:opacity-100 group-hover:visible transition-all">
-        {sizes.map((size, index) => {
-          return (
-            <div
-              key={index}
-              className="nc-shadow-lg w-10 h-10 rounded-xl bg-white hover:bg-slate-900 hover:text-white transition-colors cursor-pointer flex items-center justify-center uppercase font-semibold tracking-tight text-sm text-slate-900"
-              onClick={() => notifyAddTocart({ size })}
-            >
-              {size}
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
+  //   return (
+  //     <div className="absolute bottom-0 inset-x-1 space-x-1.5 flex justify-center opacity-0 invisible group-hover:bottom-4 group-hover:opacity-100 group-hover:visible transition-all">
+  //       {sizes.map((size, index) => {
+  //         return (
+  //           <div
+  //             key={index}
+  //             className="nc-shadow-lg w-10 h-10 rounded-xl bg-white hover:bg-slate-900 hover:text-white transition-colors cursor-pointer flex items-center justify-center uppercase font-semibold tracking-tight text-sm text-slate-900"
+  //             onClick={() => notifyAddTocart({ size })}
+  //           >
+  //             {size}
+  //           </div>
+  //         );
+  //       })}
+  //     </div>
+  //   );
+  // };
 
   return (
     <>
@@ -256,15 +255,15 @@ const ProductCard: FC<ProductCardProps> = ({
             />
           </Link>
 
-          <ProductStatus status={status} />
+          {/* <ProductStatus status={status} /> */}
 
           <LikeButton liked={isLiked} className="absolute top-3 right-3 z-10" />
 
-          {sizes ? renderSizeList() : renderGroupButtons()}
+          {/* {sizes ? renderSizeList() : renderGroupButtons()} */}
         </div>
 
         <div className="space-y-4 px-2.5 pt-5 pb-2.5">
-          {renderVariants()}
+          {/* {renderVariants()} */}
 
           <div>
             <h2
@@ -273,12 +272,12 @@ const ProductCard: FC<ProductCardProps> = ({
               {name}
             </h2>
             <p className={`text-sm text-slate-500 dark:text-slate-400 mt-1 `}>
-              {description}
+              {/* {directions} */}
             </p>
           </div>
 
           <div className="flex justify-between items-end ">
-            <Prices price={price} />
+            <Prices calories={calories}/>
             <div className="flex items-center mb-0.5">
               <StarIcon className="w-5 h-5 pb-[1px] text-amber-400" />
               <span className="text-sm ml-1 text-slate-500 dark:text-slate-400">
@@ -299,4 +298,4 @@ const ProductCard: FC<ProductCardProps> = ({
   );
 };
 
-export default ProductCard;
+export default RecipeCard;

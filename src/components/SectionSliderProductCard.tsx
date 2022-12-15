@@ -2,7 +2,7 @@ import React, { FC, useEffect, useId, useRef } from "react";
 import Heading from "components/Heading/Heading";
 import Glide from "@glidejs/glide";
 import ProductCard from "./ProductCard";
-import { Product, PRODUCTS } from "data/data";
+import { Recipes, RECIPES } from "data/recipedata";
 
 export interface SectionSliderProductCardProps {
   className?: string;
@@ -11,7 +11,7 @@ export interface SectionSliderProductCardProps {
   headingFontClassName?: string;
   headingClassName?: string;
   subHeading?: string;
-  data?: Product[];
+  data?: Recipes[];
 }
 
 const SectionSliderProductCard: FC<SectionSliderProductCardProps> = ({
@@ -21,8 +21,9 @@ const SectionSliderProductCard: FC<SectionSliderProductCardProps> = ({
   headingClassName,
   heading,
   subHeading = "REY backpacks & bags",
-  data = PRODUCTS.filter((_, i) => i < 8 && i > 2),
+  data = RECIPES,
 }) => {
+  
   const sliderRef = useRef(null);
   const id = useId();
   const UNIQUE_CLASS = "glidejs" + id.replace(/:/g, "_");
