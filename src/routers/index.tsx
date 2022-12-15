@@ -27,6 +27,7 @@ import AccountOrder from "containers/AccountPage/AccountOrder";
 import CartPage from "containers/ProductDetailPage/CartPage";
 import CheckoutPage from "containers/PageCheckout/CheckoutPage";
 import PageCollection2 from "containers/PageCollection2";
+import PageRecipeList from "containers/PageRecipeList";
 
 export const pages: Page[] = [
   { path: "/", exact: true, component: PageHome },
@@ -59,6 +60,8 @@ export const pages: Page[] = [
   { path: "/signup", component: PageSignUp },
   { path: "/login", component: PageLogin },
   { path: "/subscription", component: PageSubcription },
+  //
+  { path: "/recipelist", component: PageRecipeList}
 ];
 
 const Routes = () => {

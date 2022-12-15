@@ -11,13 +11,13 @@ import SectionPromo2 from "components/SectionPromo2";
 import SectionGridFeatureItems from "./SectionGridFeatureItems";
 import SectionHero3 from "components/SectionHero/SectionHero3";
 import SectionPromo1 from "components/SectionPromo1";
-import { SPORT_PRODUCTS } from "data/data";
+import { RECIPES } from "data/recipedata";
 
 function PageHome2() {
   return (
     <div className="nc-PageHome2 relative overflow-hidden">
       <Helmet>
-        <title>Ciseco || Home 2 Ecommerce Template</title>
+        <title>Ciseco || Home 2 Ecommerce</title>
       </Helmet>
 
       <div className="container px-4">
@@ -26,11 +26,11 @@ function PageHome2() {
       </div>
 
       <div className="container relative space-y-24 my-24 lg:space-y-32 lg:my-32">
-        <SectionHowItWork />
+        {/* <SectionHowItWork /> */}
 
         {/* SECTION */}
         <SectionSliderProductCard
-          data={SPORT_PRODUCTS.filter((_, i) => i < 8)}
+          data={RECIPES.filter((_, i) => i < 8)}
           subHeading="New Sports equipment"
         />
 
@@ -49,10 +49,10 @@ function PageHome2() {
         </div>
 
         {/* SECTION */}
-        <SectionGridFeatureItems data={SPORT_PRODUCTS} />
+        <SectionGridFeatureItems data={RECIPES} />
 
         {/* SECTION */}
-        <SectionPromo1 />
+        {/* <SectionPromo1 /> */}
       </div>
     </div>
   );

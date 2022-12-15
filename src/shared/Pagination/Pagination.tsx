@@ -3,6 +3,9 @@ import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import twFocusClass from "utils/twFocusClass";
 
+
+
+//paging 처리하는거 서버에서 정보 받아서 처리해햐 한다. 몇페이지까지 나오는지
 const DEMO_PAGINATION: CustomLink[] = [
   {
     label: "1",
@@ -14,7 +17,7 @@ const DEMO_PAGINATION: CustomLink[] = [
   },
   {
     label: "3",
-    href: "#",
+    href: "/recipelist",
   },
   {
     label: "4",
@@ -29,7 +32,7 @@ export interface PaginationProps {
 const Pagination: FC<PaginationProps> = ({ className = "" }) => {
   const renderItem = (pag: CustomLink, index: number) => {
     if (index === 0) {
-      // RETURN ACTIVE PAGINATION
+      // RETURN ACTIVE PAGINATION 어떻게 동작하는지 알아보고 구현할 것
       return (
         <span
           key={index}

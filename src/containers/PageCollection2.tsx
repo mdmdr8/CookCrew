@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import SectionSliderCollections from "components/SectionSliderLargeProduct";
 import SectionPromo1 from "components/SectionPromo1";
 import ProductCard from "components/ProductCard";
-import { PRODUCTS } from "data/data";
+import { RECIPES } from "data/recipedata";
 import SidebarFilters from "./SidebarFilters";
 
 export interface PageCollection2Props {
@@ -43,7 +43,7 @@ const PageCollection2: FC<PageCollection2Props> = ({ className = "" }) => {
               <div className="flex-shrink-0 mb-10 lg:mb-0 lg:mx-4 border-t lg:border-t-0"></div>
               <div className="flex-1 ">
                 <div className="flex-1 grid sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-10 ">
-                  {PRODUCTS.map((item, index) => (
+                  {RECIPES.map((item, index) => (
                     <ProductCard data={item} key={index} />
                   ))}
                 </div>

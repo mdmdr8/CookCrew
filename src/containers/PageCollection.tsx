@@ -6,7 +6,10 @@ import SectionSliderCollections from "components/SectionSliderLargeProduct";
 import SectionPromo1 from "components/SectionPromo1";
 import ProductCard from "components/ProductCard";
 import TabFilters from "./TabFilters";
-import { PRODUCTS } from "data/data";
+import { RECIPES } from "data/recipedata";
+
+//Pagination 구현, Sorting 구현
+
 
 export interface PageCollectionProps {
   className?: string;
@@ -27,11 +30,10 @@ const PageCollection: FC<PageCollectionProps> = ({ className = "" }) => {
           {/* HEADING */}
           <div className="max-w-screen-sm">
             <h2 className="block text-2xl sm:text-3xl lg:text-4xl font-semibold">
-              Man collection
+              모든 레시피
             </h2>
             <span className="block mt-4 text-neutral-500 dark:text-neutral-400 text-sm sm:text-base">
-              We not only help you design exceptional products, but also make it
-              easy for you to share your designs with more like-minded people.
+              전체 레시피 조회
             </span>
           </div>
 
@@ -42,7 +44,7 @@ const PageCollection: FC<PageCollectionProps> = ({ className = "" }) => {
 
             {/* LOOP ITEMS */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10 mt-8 lg:mt-10">
-              {PRODUCTS.map((item, index) => (
+              {RECIPES.map((item, index) => (
                 <ProductCard data={item} key={index} />
               ))}
             </div>
@@ -50,19 +52,19 @@ const PageCollection: FC<PageCollectionProps> = ({ className = "" }) => {
             {/* PAGINATION */}
             <div className="flex flex-col mt-12 lg:mt-16 space-y-5 sm:space-y-0 sm:space-x-3 sm:flex-row sm:justify-between sm:items-center">
               <Pagination />
-              <ButtonPrimary loading>Show me more</ButtonPrimary>
+              {/* <ButtonPrimary loading>Show me more</ButtonPrimary> */}
             </div>
           </main>
         </div>
 
         {/* === SECTION 5 === */}
-        <hr className="border-slate-200 dark:border-slate-700" />
+        {/* <hr className="border-slate-200 dark:border-slate-700" /> */}
 
         <SectionSliderCollections />
-        <hr className="border-slate-200 dark:border-slate-700" />
+        {/* <hr className="border-slate-200 dark:border-slate-700" /> */}
 
         {/* SUBCRIBES */}
-        <SectionPromo1 />
+        {/* <SectionPromo1 /> */}
       </div>
     </div>
   );

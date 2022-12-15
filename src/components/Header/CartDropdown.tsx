@@ -1,14 +1,14 @@
 import { Popover, Transition } from "@headlessui/react";
-import Prices from "components/Prices";
-import { Product, PRODUCTS } from "data/data";
+import Calories from "components/Prices";
+import { Recipes, RECIPES } from "data/recipedata";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 
 export default function CartDropdown() {
-  const renderProduct = (item: Product, index: number, close: () => void) => {
-    const { name, price, image } = item;
+  const renderProduct = (item: Recipes, index: number, close: () => void) => {
+    const { name, calories, image } = item;
     return (
       <div key={index} className="flex py-5 last:pb-0">
         <div className="relative h-24 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100">
@@ -39,7 +39,7 @@ export default function CartDropdown() {
                   <span>{"XL"}</span>
                 </p>
               </div>
-              <Prices price={price} className="mt-0.5" />
+              <Calories calories={calories} className="mt-0.5" />
             </div>
           </div>
           <div className="flex flex-1 items-end justify-between text-sm">
@@ -128,7 +128,7 @@ export default function CartDropdown() {
                   <div className="max-h-[60vh] p-5 overflow-y-auto hiddenScrollbar">
                     <h3 className="text-xl font-semibold">Shopping cart</h3>
                     <div className="divide-y divide-slate-100 dark:divide-slate-700">
-                      {[PRODUCTS[0], PRODUCTS[1], PRODUCTS[2]].map(
+                      {[RECIPES[0], RECIPES[1]].map(
                         (item, index) => renderProduct(item, index, close)
                       )}
                     </div>

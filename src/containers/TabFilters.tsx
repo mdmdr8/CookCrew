@@ -58,8 +58,8 @@ const DATA_sortOrderRadios = [
   { name: "Most Popular", id: "Most-Popular" },
   { name: "Best Rating", id: "Best-Rating" },
   { name: "Newest", id: "Newest" },
-  { name: "Price Low - Hight", id: "Price-low-hight" },
-  { name: "Price Hight - Low", id: "Price-hight-low" },
+  { name: "Calories Low - Hight", id: "Calories-low-hight" },
+  { name: "Calories Hight - Low", id: "Calories-hight-low" },
 ];
 
 const PRICE_RANGE = [1, 500];
@@ -1132,11 +1132,11 @@ const TabFilters = () => {
     <div className="flex lg:space-x-4">
       {/* FOR DESKTOP */}
       <div className="hidden lg:flex flex-1 space-x-4">
-        {renderTabsPriceRage()}
+        {/* {renderTabsPriceRage()}
         {renderTabsCategories()}
         {renderTabsColor()}
         {renderTabsSize()}
-        {renderTabIsOnsale()}
+        {renderTabIsOnsale()} */}
         <div className="!ml-auto">{renderTabsSortOrder()}</div>
       </div>
 
